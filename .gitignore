@@ -1,0 +1,7 @@
+#Ignore these directories
+.ipynb_checkpoints
+__pycache__
+save*
+
+#ignore these files
+*.pyc
