@@ -17,8 +17,8 @@ import json
 import subprocess
 import numpy
 
-BATCH_SIZE = 4
-DEVICE = '/cpu:0'
+BATCH_SIZE = 16
+DEVICE = '/gpu:0'
 
 
 def from_pipe(opts):
