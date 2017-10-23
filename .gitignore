@@ -1,8 +1,6 @@
-#Ignore these directories
 .ipynb_checkpoints
 __pycache__
 train
 save*
-
-#ignore these files
+vgg
 *.pyc
