@@ -3,4 +3,5 @@ __pycache__
 train
 save*
 vgg
+model*
 *.pyc
