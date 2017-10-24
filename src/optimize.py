@@ -28,7 +28,7 @@ def optimize(content_targets, style_target, content_weight, style_weight,
     print(style_shape)
 
     # precompute style features
-    with tf.Graph().as_default(), tf.device('/cpu:0'), tf.Session() as sess:
+    with tf.Graph().as_default(), tf.device('/gpu:0'), tf.Session() as sess:
         style_image = tf.placeholder(tf.float32, shape=style_shape, name='style_image')
         style_image_pre = vgg.preprocess(style_image)
         net = vgg.net(vgg_path, style_image_pre)
@@ -97,6 +97,7 @@ def optimize(content_targets, style_target, content_weight, style_weight,
             num_examples = len(content_targets)
             iterations = 0
             while iterations * batch_size < num_examples:
+                print(epoch, iterations)
                 start_time = time.time()
                 curr = iterations * batch_size
                 step = curr + batch_size
@@ -135,6 +136,7 @@ def optimize(content_targets, style_target, content_weight, style_weight,
                     else:
                        saver = tf.train.Saver()
                        res = saver.save(sess, save_path)
+                       print("saved!")
                     yield(_preds, losses, iterations, epoch)
 
 
